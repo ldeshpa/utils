@@ -43,7 +43,7 @@ done
 
 FILE_ARRAY=""
 FORMATED_COLUMN_LIST=""
-LOG_FILE='./map_gcp_GSToCloudSQLFull_log_'`date +%Y%m%d%H%M%S`'.log'
+LOG_FILE='/appl/map/logs/map_gcp_GSToCloudSQLFull_log_'`date +%Y%m%d%H%M%S`'.log'
 
 function INFO
 {
