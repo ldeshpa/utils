@@ -28,40 +28,27 @@ do
     esac
 done
 
-if [ ! -f /appl/map/ctrlfile/core/map_db_user_cred ]
-then
-echo "ERROR: File /appl/map/ctrlfile/core/map_db_user_prod_cred doesn't exist. Exiting"
-exit -1
-fi
-
-# Load the config file
-. /appl/map/ctrlfile/core/map_db_user_cred
-
-if [ $? -ne 0 ]
-then
-echo "ERROR : Something wrong with the file permissions on /appl/map/ctrlfile/core/map_db_user_prod_cred . Exiting"
-exit -1
-fi
 
 #variables to store info
 # Parameters/Variables
 SCRIPT_PATH=`dirname $0`
 SCRIPT_NAME=`basename $0`
-USER_NAME=$MYSQL_USER
-M_PASSWORD=$MYSQL_PWD
-HOST_NAME=$MYSQL_HOSTNAME
-PORT=$MYSQL_PORT
-DB_NAME=$MYSQL_SCHEMA
-CTRLTBL=$MYSQL_CONTROL_TBL
-CTRLTBL_LOG=$CTRLTBL"_LOG"
-EMAILADDR=$EMAIL_ADDR_DIST
-MAP_ONCALL=$MAPONCALL
+USER_NAME='root'
+M_PASSWORD='1mvSYW'
+HOST_NAME='104.155.183.221'
+PORT='3306'
+DB_NAME='L0_map_tbls'
+CTRLTBL='mapcontroltbl'
+CTRLTBL_LOG=$CTRLTBL"_log"
+MAP_ONCALL='ldeshpa@searshc.com,vtarvec@searshc.com,asaxen1@searshc.com'
+HOST='GoogleComputeEngine'
+SCHEDULER='MAP MySQL Scheduler'
 COMMANDLIST=/tmp/TMP_MAPMADE_JobList_$$
 TMPFINALSCRIPT=/tmp/TMP_MAPMADE_FinalScript_$$.sh
 TIMESTAMP=`date +%Y%m%d%H%M%S`
 
 # Defalut log folder
-LOGDIR=$MYSQL_LOG_DIR
+LOGDIR='/appl/map/logs'
 LOGFILE="$LOGDIR/${SCRIPT_NAME}_${BATCHNAME}_$TIMESTAMP.log"
 
 if [[ -z ${BATCHNAME} ]]

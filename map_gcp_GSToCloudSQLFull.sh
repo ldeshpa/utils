@@ -132,7 +132,7 @@ for EachFile in "${FILE_ARRAY[@]:1}"
 do
   INFO "Loading File : ${EachFile}"
   LOAD_START_TIME=`date +%s`
-  OperationID=`python map_gcp_GSToCloudSQL.py $PROJECT_NAME $CLOUDSQL_INSTANCE_NAME $EachFile $CLOUDSQL_DATABASE $CLOUDSQL_TARGET_TABLE $COLUMN_LIST`
+  OperationID=`python /appl/map/code/utils/map_gcp_GSToCloudSQL.py $PROJECT_NAME $CLOUDSQL_INSTANCE_NAME $EachFile $CLOUDSQL_DATABASE $CLOUDSQL_TARGET_TABLE $COLUMN_LIST`
   OperationID=`echo $OperationID | cut -d\' -f2` 
   INFO "Operation ID For this Job : "$OperationID
   # FOLLOWING COMMAND IS IN IT'S ALPHA PHASE. CAN CHANGE WITHOUT NOTICE. PLEASE CHECK gcloud DOCUMENTATION IF DOESN'T WORK AS EXPECTED.
